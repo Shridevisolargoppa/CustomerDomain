@@ -5,7 +5,6 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDateTime;
-@Data
 @Entity
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class CustomerDomain {
@@ -26,6 +25,7 @@ public class CustomerDomain {
     @Column(name = "address")
     String address;
 
+    @Getter
     @Column(name = "company_name")
     String companyName;
 
@@ -40,10 +40,6 @@ public class CustomerDomain {
 
     @Column(name = "audit")
     LocalDateTime audit;
-
-    public void setCustomerID(long customerID) {
-        this.customerID = customerID;
-    }
 
     public void setName(String name) {
         this.name = name;
@@ -81,10 +77,6 @@ public class CustomerDomain {
         this.audit = audit;
     }
 
-    public long getCustomerID() {
-        return customerID;
-    }
-
     public String getName() {
         return name;
     }
@@ -99,10 +91,6 @@ public class CustomerDomain {
 
     public String getAddress() {
         return address;
-    }
-
-    public String getCompanyName() {
-        return companyName;
     }
 
     public String getIndustryType() {
@@ -122,7 +110,6 @@ public class CustomerDomain {
     }
 
     public CustomerDomain(String name, String email, long phone, String address, String companyName, String industryType, String customerStatus, String accountManager) {
-        this.customerID = customerID;
         this.name = name;
         this.email = email;
         this.phone = phone;
@@ -131,7 +118,6 @@ public class CustomerDomain {
         this.industryType = industryType;
         this.customerStatus = customerStatus;
         this.accountManager = accountManager;
-        this.audit = audit;
     }
 
     public CustomerDomain()

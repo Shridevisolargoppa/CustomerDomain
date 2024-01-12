@@ -3,15 +3,11 @@ package com.CustomerManagementMicroService.albanero.Service;
 import com.CustomerManagementMicroService.albanero.Domain.CustomerDomain;
 import com.CustomerManagementMicroService.albanero.Exception.InvalidCustomerException;
 import com.CustomerManagementMicroService.albanero.Repository.CustomerDomainRepository;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
