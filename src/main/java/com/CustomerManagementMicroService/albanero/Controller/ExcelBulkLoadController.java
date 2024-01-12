@@ -12,12 +12,11 @@ import java.io.IOException;
 @RequestMapping
 public class ExcelBulkLoadController {
 
-    private final ExcelBulkLoadService excelBulkLoadService;
-
     @Autowired
-    public ExcelBulkLoadController(ExcelBulkLoadService excelBulkLoadService) {
-        this.excelBulkLoadService = excelBulkLoadService;
-    }
+
+    private  ExcelBulkLoadService excelBulkLoadService;
+
+
 
     @PostMapping("/api/excelBulkLoad")
     public ResponseEntity<String> excelBulkLoad(@RequestPart("file") MultipartFile excelFile) {
