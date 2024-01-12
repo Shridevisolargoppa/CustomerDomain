@@ -1,0 +1,12 @@
+package com.CustomerManagementMicroService.albanero.Exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(HttpStatus.BAD_REQUEST)
+public class InvalidCustomerException extends Exception{
+   public InvalidCustomerException(String messege)
+   {
+       super(messege);
+   }
+}
