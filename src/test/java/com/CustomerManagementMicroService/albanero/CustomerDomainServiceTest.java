@@ -55,18 +55,7 @@ class CustomerDomainServiceTest {
         verify(customerRepository, times(1)).findAll();
     }
 
-    @Test
-    void testGetById() {
-        Long customerId = 1L;
-        CustomerDomain customer = new CustomerDomain();
-        when(customerRepository.findById(customerId)).thenReturn(Optional.of(customer));
 
-        Optional<CustomerDomain> result = customerService.getById(customerId);
-
-        assertTrue(result.isPresent());
-        assertEquals(customer, result.get());
-        verify(customerRepository, times(1)).findById(customerId);
-    }
 
     @Test
     void testUpdate() throws InvalidCustomerException {

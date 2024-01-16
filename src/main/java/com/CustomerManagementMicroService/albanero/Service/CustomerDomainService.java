@@ -30,8 +30,9 @@ public class CustomerDomainService {
         return customerRepository.findAll();
     }
 
-    public Optional<CustomerDomain> getById(Long customerId) {
-        return customerRepository.findById(customerId);
+    public CustomerDomain getById(Long customerId) throws InvalidCustomerException {
+        return customerRepository.findById(customerId)
+                .orElseThrow(() -> new InvalidCustomerException("Customer with ID " + customerId + " not found"));
     }
 
     public CustomerDomain update(Long customerId, CustomerDomain updatedCustomer) throws InvalidCustomerException {

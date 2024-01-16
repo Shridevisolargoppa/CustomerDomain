@@ -37,12 +37,13 @@ public class CustomerDomainController {
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<CustomerDomain> getCustomerById(@PathVariable Long customerId) {
-        CustomerDomain customer = customerDomainService.getById(customerId).orElse(null);
-        if (customer != null) {
+    public ResponseEntity<?> getCustomerById(@PathVariable Long customerId) {
+        try {
+            CustomerDomain customer = customerDomainService.getById(customerId);
             return new ResponseEntity<>(customer, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (InvalidCustomerException e) {
+            String notFoundMessage = "Customer with ID " + customerId + " not found.";
+            return new ResponseEntity<>(notFoundMessage, HttpStatus.NOT_FOUND);
         }
     }
 
@@ -57,6 +58,7 @@ public class CustomerDomainController {
             return new ResponseEntity<>(notFoundMessage, HttpStatus.NOT_FOUND);
         }
     }
+
 
     @PutMapping("/{customerId}")
     public ResponseEntity<?> updateCustomer(@PathVariable Long customerId, @RequestBody CustomerDomain updatedCustomer) {

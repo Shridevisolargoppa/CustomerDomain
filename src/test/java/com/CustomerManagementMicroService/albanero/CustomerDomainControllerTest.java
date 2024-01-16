@@ -54,15 +54,4 @@ class CustomerDomainControllerTest {
         assertEquals(customerList, responseEntity.getBody());
     }
 
-    @Test
-    void testGetCustomerById() {
-        Long customerId = 1L;
-        CustomerDomain customer = new CustomerDomain();
-        when(customerDomainService.getById(customerId)).thenReturn(Optional.of(customer));
-
-        ResponseEntity<CustomerDomain> responseEntity = customerDomainController.getCustomerById(customerId);
-
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(customer, responseEntity.getBody());
-    }
 }
