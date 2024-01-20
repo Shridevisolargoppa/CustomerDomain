@@ -3,6 +3,7 @@ package com.CustomerManagementMicroService.albanero.Service;
 import com.CustomerManagementMicroService.albanero.Domain.CustomerDomain;
 import com.CustomerManagementMicroService.albanero.Exception.InvalidCustomerException;
 import com.CustomerManagementMicroService.albanero.Repository.CustomerDomainRepository;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,4 +59,13 @@ public class CustomerDomainService {
     }
 
 
+
+
+    public List<CustomerDomain> findByCompanyName(String companyName) {
+        List<CustomerDomain> customerDomains = customerRepository.findByCompanyName(companyName);
+        if(ObjectUtils.isEmpty(customerDomains)){
+            throw new RuntimeException("customer domains is null");
+        }
+        return customerDomains;
+    }
 }

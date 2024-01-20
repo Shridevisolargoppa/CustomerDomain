@@ -36,6 +36,12 @@ public class CustomerDomainController {
         }
     }
 
+    @GetMapping("/get")
+    public List<CustomerDomain> getDetailsByCompanyName(@RequestParam  String companyName) {
+        return customerDomainService.findByCompanyName(companyName);
+    }
+
+
     @GetMapping("/{customerId}")
     public ResponseEntity<?> getCustomerById(@PathVariable Long customerId) {
         try {
@@ -58,8 +64,6 @@ public class CustomerDomainController {
             return new ResponseEntity<>(notFoundMessage, HttpStatus.NOT_FOUND);
         }
     }
-
-
     @PutMapping("/{customerId}")
     public ResponseEntity<?> updateCustomer(@PathVariable Long customerId, @RequestBody CustomerDomain updatedCustomer) {
         try {
