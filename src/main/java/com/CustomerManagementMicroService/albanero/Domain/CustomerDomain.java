@@ -15,9 +15,6 @@ public class CustomerDomain {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     long customerID;
-
-
-
     @Column(name = "name")
     String name;
 
